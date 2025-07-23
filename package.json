@@ -1,0 +1,23 @@
+{
+  "name": "clockify-clone",
+  "version": "1.0.0",
+  "description": "THis is a readme file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vedha-Varshini-NJ/Clockify-clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vedha-Varshini-NJ/Clockify-clone/issues"
+  },
+  "homepage": "https://github.com/Vedha-Varshini-NJ/Clockify-clone#readme",
+  "dependencies": {
+    "vite": "^7.0.5"
+  }
+}
