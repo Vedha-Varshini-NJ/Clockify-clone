@@ -1,0 +1,418 @@
+.dialog__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog__content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.dialog__header--title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.dialog__close {
+  cursor: pointer;
+  font-size: 24px;
+  color: #a0aec0;
+}
+
+.dialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dialog__form-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.dialog__form-row--last {
+  border-bottom: none;
+}
+
+.dialog__form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.dialog__form-label {
+  font-size: 14px;
+  color: #4a5568;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.dialog__form-control {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  background-color: #f7fafc;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.dialog__form-control--enabled {
+  background-color: #ffffff;
+  border-color: #cbd5e0;
+  cursor: text;
+}
+
+.dialog__form-control--disabled {
+  background-color: #f7fafc;
+  cursor: not-allowed;
+}
+
+.dialog__form-control--project-button,
+.dialog__form-control--tags-button,
+.dialog__form-control--date-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f7fafc;
+  cursor: not-allowed;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 25px;
+  text-align: left;
+}
+
+.dialog__form-control--project-button--enabled,
+.dialog__form-control--tags-button--enabled,
+.dialog__form-control--date-button--enabled {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.dialog__form-control--project-button .dialog__project-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dialog__form-control--tags-button img {
+  width: 16px;
+  height: 16px;
+}
+
+.dialog__tags-options {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #718096;
+  margin-top: 5px;
+  margin-left: 28px;
+}
+
+.dialog__tags-options input[type="radio"] {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.dialog__billable-toggle {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.dialog__billable-toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.dialog__billable-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.dialog__billable-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.dialog__billable-toggle-input:checked + .dialog__billable-toggle-slider {
+  background-color: #3182ce;
+}
+
+.dialog__billable-toggle-input:checked + .dialog__billable-toggle-slider:before {
+  transform: translateX(14px);
+}
+
+.dialog__billable-toggle--disabled .dialog__billable-toggle-slider {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.dialog__billable-toggle--disabled .dialog__billable-toggle-slider:before {
+  background-color: #bdbdbd;
+}
+
+.dialog__billable-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialog__billable-label {
+  font-size: 14px;
+  color: #718096;
+  font-weight: 500;
+}
+
+.dialog__time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dialog__time-input {
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 15px;
+}
+
+.dialog__footer--cancel,
+.dialog__footer--save {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dialog__footer--cancel {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+
+.dialog__footer--save {
+  background-color: #3182ce;
+  color: #ffffff;
+}
+
+.dialog__color-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialog__color-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 40%;
+}
+
+.dialog__checkbox {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.dialog__item-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.dialog__item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dialog__item:hover {
+  background-color: #f7fafc;
+}
+
+.dialog__item-icon {
+  margin-right: 10px;
+}
+
+.dialog__item-text {
+  flex-grow: 1;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.dialog__item-subtext {
+  font-size: 12px;
+  color: #718096;
+}
+
+.dialog__create-new {
+  display: none;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dialog__create-new:hover {
+  background-color: #f7fafc;
+}
+
+.dialog__create-text {
+  font-size: 14px;
+  color: #3182ce;
+}
+
+.dialog__search-input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.dialog__calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dialog__calendar-nav {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.dialog__calendar-month {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.dialog__calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.dialog__calendar-day-name {
+  font-size: 12px;
+  text-align: center;
+  color: #718096;
+  padding: 5px 0;
+}
+
+.dialog__calendar-day {
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.dialog__calendar-day:hover {
+  background-color: #f7fafc;
+}
+
+.dialog__calendar-day--today {
+  background-color: #3182ce;
+  color: #ffffff;
+}
+
+.dropdown-dialog {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  z-index: 1001;
+  padding: 10px;
+  min-width: 250px;
+  display: block;
+}
+
+.dropdown-dialog.task-dialog {
+  z-index: 1002; /* Higher than other dropdowns to avoid shadowing */
+}
+
+.dropdown-dialog .dialog__content {
+  width: auto;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0;
+  box-shadow: none;
+}
+
+.dropdown-dialog .dialog__search-input {
+  width: calc(100% - 16px);
+  margin: 8px;
+}
+
+.dropdown-dialog .dialog__item-list {
+  margin-top: 0;
+}
+
+.dropdown-dialog .dialog__item {
+  padding: 8px 12px;
+}
+
+.dropdown-dialog .dialog__create-new {
+  padding: 8px 12px;
+}
+
+.dropdown-dialog .dialog__calendar-header {
+  padding: 8px 12px;
+}
+
+.dropdown-dialog .dialog__calendar {
+  padding: 0 8px 8px;
+}

@@ -1,0 +1,759 @@
+/* src/styles/entrylist.css */
+.entry-list__container {
+  margin-top: 20px;
+  flex-grow: 1; /* Allows the container to take up available vertical space */
+  overflow-y: auto; /* Enables vertical scrolling for the entry list */
+  padding: 0 20px 20px 20px; /* Add padding for content, especially at bottom */
+}
+
+.entry-list__weekly-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f7fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.entry-list__weekly-header--title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.entry-list__weekly-header--total {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.entry-list__day-entry-group {
+  margin-top: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.entry-list__day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.entry-list__day-header:hover {
+  background-color: #f7fafc;
+}
+
+.entry-list__day-header__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.entry-list__day-header__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.entry-list__day-header__total {
+  font-size: 14px;
+  font-weight: bold;
+  color: #4a5568;
+}
+
+.entry-list__day-header__bulk-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.entry-list__day-header__bulk-button {
+  background: none;
+  border: none;
+  color: #3182ce;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.entry-list__day-header__bulk-button--delete {
+  color: #e53e3e;
+}
+
+.entry-list__day-header .entry-list__bulk-edit-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.entry-list__time-entry-wrapper {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.entry-list__time-entry-wrapper--last-child {
+  border-bottom: none;
+}
+
+.entry-list__time-entry {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #ffffff;
+  position: relative;
+  gap: 15px; /* Ensure consistent spacing */
+}
+
+.entry-list__time-entry + .entry-list__time-entry {
+  border-top: 1px dashed #e2e8f0;
+}
+
+.entry-list__time-entry__checkbox,
+.entry-list__sub-entries-toggle {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+/* Align all columns horizontally */
+.entry-list__time-entry__details {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 20px; /* Add space between items */
+}
+
+
+.entry-list__time-entry__input,
+.entry-list__time-entry__project-button,
+.entry-list__time-entry__tags-button,
+.entry-list__time-entry__billable-button,
+.entry-list__time-entry__time-display,
+.entry-list__time-entry__play-button,
+.entry-list__time-entry__more-options {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #4a5568;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.entry-list__time-entry__input {
+  flex-grow: 1;
+  border: 1px solid transparent;
+  padding: 5px;
+  border-radius: 4px;
+  min-width: 150px;
+}
+
+.entry-list__time-entry__input:focus {
+  outline: none;
+  border-color: #cbd5e0;
+}
+
+.entry-list__time-entry__project-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.entry-list__time-entry__project-button .entry-list__project-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.entry-list__time-entry__project-button span {
+  font-weight: 500;
+}
+
+.entry-list__time-entry__tags-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.entry-list__time-entry__billable-button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #a0aec0;
+  transition: color 0.3s ease;
+}
+
+.entry-list__time-entry__billable-button--billable-active {
+  color: #3182ce;
+}
+
+.entry-list__time-entry__time-range {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 10px;
+}
+
+.entry-list__time-entry__time-input {
+  border: 1px solid #e2e8f0;
+  padding: 5px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  width: 60px;
+  text-align: center;
+}
+
+.entry-list__time-entry__time-display {
+  font-family: 'Inter', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  width: 85px;
+  text-align: right;
+  letter-spacing: -0.5px;
+}
+
+.entry-list__time-entry__play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+}
+
+.entry-list__time-entry__play-button img {
+  width: 14px;
+  height: 14px;
+  filter: invert(1);
+}
+
+.entry-list__time-entry__more-options {
+  margin-left: 10px;
+  position: relative;
+}
+
+.entry-list__time-entry__more-options-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.entry-list__time-entry__more-options-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 120px;
+  z-index: 10;
+  padding: 5px 0;
+  display: none;
+}
+
+.entry-list__time-entry__more-options-menu--show {
+  display: block;
+}
+
+.entry-list__time-entry__more-options-item {
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #2d3748;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.entry-list__time-entry__more-options-item:hover {
+  background-color: #f7fafc;
+}
+
+.entry-list__time-entry__more-options-item--delete {
+  color: #e53e3e;
+}
+
+.entry-list__sub-entries-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  margin-right: 15px;
+  color: #3182ce;
+  font-weight: 500;
+}
+
+.entry-list__sub-entries-toggle img {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.entry-list__sub-entries-toggle--collapsed img {
+  transform: rotate(-90deg);
+}
+
+.entry-list__sub-entry-list {
+  padding-left: 20px;
+  background-color: #fcfcfc;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.entry-list__sub-entry {
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.entry-list__sub-entry--last-child {
+  border-bottom: none;
+}
+
+.entry-list__time-entry__calendar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: none;
+  background : none;
+}
+
+/* Modal Styling with BEM */
+/* This section is for the main modal overlays (like bulk edit, create project, create task, confirm) */
+.dialog__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog__content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.dialog__header--title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.dialog__close {
+  cursor: pointer;
+  font-size: 24px;
+  color: #a0aec0;
+}
+
+.dialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dialog__form-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.dialog__form-row--last {
+  border-bottom: none;
+}
+
+.dialog__form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.dialog__form-label {
+  font-size: 14px;
+  color: #4a5568;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.dialog__form-control {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  background-color: #f7fafc;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.dialog__form-control--enabled {
+  background-color: #ffffff;
+  border-color: #cbd5e0;
+}
+
+.dialog__form-control--disabled {
+  background-color: #f7fafc;
+  cursor: not-allowed;
+}
+
+.dialog__form-control--project-button,
+.dialog__form-control--tags-button,
+.dialog__form-control--date-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f7fafc;
+  cursor: not-allowed;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 25px;
+  text-align: left;
+}
+
+.dialog__form-control--project-button--enabled,
+.dialog__form-control--tags-button--enabled,
+.dialog__form-control--date-button--enabled {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.dialog__form-control--project-button .dialog__project-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dialog__form-control--tags-button img {
+  width: 16px;
+  height: 16px;
+}
+
+.dialog__tags-options {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #718096;
+  margin-top: 5px;
+  margin-left: 28px;
+}
+
+.dialog__tags-options input[type="radio"] {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.dialog__billable-toggle {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.dialog__billable-toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.dialog__billable-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.dialog__billable-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.dialog__billable-toggle-input:checked + .dialog__billable-toggle-slider {
+  background-color: #3182ce;
+}
+
+.dialog__billable-toggle-input:checked + .dialog__billable-toggle-slider:before {
+  transform: translateX(14px);
+}
+
+.dialog__billable-toggle--disabled .dialog__billable-toggle-slider {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.dialog__billable-toggle--disabled .dialog__billable-toggle-slider:before {
+  background-color: #bdbdbd;
+}
+
+.dialog__billable-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialog__billable-label {
+  font-size: 14px;
+  color: #718096;
+  font-weight: 500;
+}
+
+.dialog__time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dialog__time-input {
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 15px;
+}
+
+.dialog__footer--cancel,
+.dialog__footer--save {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dialog__footer--cancel {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+
+.dialog__footer--save {
+  background-color: #3182ce;
+  color: #ffffff;
+}
+
+.dialog__color-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialog__color-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 40%;
+}
+
+.dialog__checkbox {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.dialog__item-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.dialog__item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dialog__item:hover {
+  background-color: #f7fafc;
+}
+
+.dialog__item-icon {
+  margin-right: 10px;
+}
+
+.dialog__item-text {
+  flex-grow: 1;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.dialog__item-subtext {
+  font-size: 12px;
+  color: #718096;
+}
+
+.dialog__create-new {
+  display: none;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dialog__create-new:hover {
+  background-color: #f7fafc;
+}
+
+.dialog__create-text {
+  font-size: 14px;
+  color: #3182ce;
+}
+
+.dialog__search-input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.dialog__calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dialog__calendar-nav {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.dialog__calendar-month {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.dialog__calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.dialog__calendar-day-name {
+  font-size: 12px;
+  text-align: center;
+  color: #718096;
+  padding: 5px 0;
+}
+
+.dialog__calendar-day {
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.dialog__calendar-day:hover {
+  background-color: #f7fafc;
+}
+
+.dialog__calendar-day--today {
+  background-color: #3182ce;
+  color: #ffffff;
+}
+
+/* New style for dropdown dialogs (Project, Tags, Calendar) */
+.dropdown-dialog {
+  position: absolute; /* Position relative to the trigger button */
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  z-index: 1001; /* Higher than main modal overlay, lower than confirm modal */
+  padding: 10px;
+  min-width: 250px;
+  /* Ensure it's not a flex container covering the whole screen */
+  display: block;
+}
+
+.dropdown-dialog .dialog__content {
+  /* Reset content styles that might come from .dialog__overlay */
+  width: auto;
+  max-height: 300px; /* Limit height for dropdowns */
+  overflow-y: auto;
+  padding: 0; /* Remove padding from content itself, dialog has padding */
+  box-shadow: none; /* Remove shadow as it's on the dropdown-dialog */
+}
+
+.dropdown-dialog .dialog__search-input {
+  width: calc(100% - 16px); /* Account for padding */
+  margin: 8px;
+}
+
+.dropdown-dialog .dialog__item-list {
+  margin-top: 0; /* Remove extra margin */
+}
+
+.dropdown-dialog .dialog__item {
+  padding: 8px 12px; /* Add padding to items */
+}
+
+.dropdown-dialog .dialog__create-new {
+  padding: 8px 12px;
+}
+
+.dropdown-dialog .dialog__calendar-header {
+  padding: 8px 12px;
+}
+
+.dropdown-dialog .dialog__calendar {
+  padding: 0 8px 8px;
+}
