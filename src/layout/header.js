@@ -1,3 +1,5 @@
+// src/layout/header.js
+
 export function renderHeader() {
   const header = document.createElement('div');
   header.className = 'app__header';

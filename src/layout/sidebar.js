@@ -1,4 +1,6 @@
-export function renderSidebar() {
+// src/layout/sidebar.js
+
+export function renderSidebar(parentEl) {
   const TOP_ITEMS = [
     { name: 'Time Tracker', icon: 'time-tracker.svg' },
     { name: 'Calendar', icon: 'calendar.svg' },
@@ -23,7 +25,6 @@ export function renderSidebar() {
     { name: 'Invoices', icon: 'invoices.svg' },
   ];
 
-  const app = document.getElementById('app');
   const sidebar = document.createElement('nav');
   sidebar.className = 'sidebar';
   sidebar.innerHTML = `
@@ -61,13 +62,8 @@ export function renderSidebar() {
     <button class="sidebar__toggle-button" id="sidebarToggle">
       <img id="sidebarToggleIcon" src="assets/icons/sidebar-toggler-union-open.svg" alt="Toggle Sidebar" />
     </button>
-
-    <div class="toast" id="reorderToast">
-      <img src="assets/icons/check-white.svg" alt="Success" class="toast__icon" />
-      <span class="toast__text">Item reordered</span>
-    </div>
   `;
-  app.appendChild(sidebar);
+  parentEl.appendChild(sidebar);
 
   // Toggle bottom menu
   const toggleItem = document.getElementById('toggleItem');
@@ -121,27 +117,62 @@ export function renderSidebar() {
           const draggedIndex = [...container.children].indexOf(draggedItem);
           const targetIndex = [...container.children].indexOf(item);
 
-          if (draggedIndex < targetIndex) {
-            container.insertBefore(draggedItem, item.nextSibling);
-          } else {
-            container.insertBefore(draggedItem, item);
-          }
+          // Find the correct insertion point, avoiding headers and the toggle item
+          const referenceNode = (draggedIndex < targetIndex) ? item.nextSibling : item;
+          container.insertBefore(draggedItem, referenceNode);
 
           const itemName = draggedItem.querySelector('.sidebar__item-text')?.textContent || 'Item';
-          showToast(`${itemName} reordered`);
+          showToast(`${itemName} reordered!`); // Use the global showToast
         }
       });
     });
   }
 
   enableDrag('menu');
+  // Re-enable drag for the moreMenu after it's shown, as its content is dynamic
+  toggleItem.addEventListener('click', () => {
+    if (!moreMenu.classList.contains('hidden')) {
+      enableDrag('moreMenu');
+    }
+  });
+}
 
-  function showToast(message = 'Item reordered') {
-    const toast = document.getElementById('reorderToast');
-    toast.querySelector('.toast__text').textContent = message;
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 3000);
+// Function to show a toast notification (global)
+export function showToast(message, type = 'success') {
+  let toast = document.getElementById('toast');
+  if (!toast) {
+    // Create toast element if it doesn't exist
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.className = 'toast';
+    toast.innerHTML = `
+      <img src="https://app.clockify.me/assets/ui-icons/checkmark-white-circle.svg" alt="Success" class="toast__icon">
+      <span class="toast__message"></span>
+    `;
+    document.body.appendChild(toast);
   }
+
+  const toastMessage = toast.querySelector('.toast__message');
+  const toastIcon = toast.querySelector('.toast__icon');
+
+  toastMessage.textContent = message;
+
+  // Reset classes and apply type-specific styles
+  toast.classList.remove('show', 'toast--success', 'toast--error');
+  // Update icon source based on type
+  if (type === 'success') {
+    toast.classList.add('toast--success');
+    toast.style.backgroundColor = '#38a169'; // Green for success
+    toastIcon.src = 'https://app.clockify.me/assets/ui-icons/checkmark-white-circle.svg';
+  } else if (type === 'error') {
+    toast.classList.add('toast--error');
+    toast.style.backgroundColor = '#e53e3e'; // Red for error
+    toastIcon.src = 'assets/icons/x-circle.svg'; // Assuming you have an x-circle.svg for errors
+  }
+
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3000); // Hide after 3 seconds
 }
